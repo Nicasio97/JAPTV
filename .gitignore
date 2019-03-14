@@ -13,3 +13,5 @@ DataAccess/DataAccess.csproj
 DataAccess/Properties
 DataAccess/SqlDataAccess.cs
 DataAccess/bin
+
+WebApplication
