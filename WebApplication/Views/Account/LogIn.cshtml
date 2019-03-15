@@ -1,0 +1,19 @@
+﻿@model WebApplication.Models.User
+
+@{
+    ViewBag.Title = "Log In";
+}
+
+<h2>Log In</h2>
+
+@using (Html.BeginForm("LogInCheck", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post/*, new { @class = "form-horizontal", role = "form" }*/))
+{
+    <div>
+        @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Usuario" })
+    </div>
+    <div>
+        @Html.PasswordFor(m => m.Password, new { @placeholder = "Contraseña" })
+    </div>
+    <p style="color:#FF0000" ;>@ViewBag.Message</p>
+    <input type="submit" value="Ingresar" class="btn btn-default" />
+}

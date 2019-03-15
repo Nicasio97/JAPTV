@@ -1,0 +1,21 @@
+﻿@model WebApplication.Models.ModelUser
+@using Domain;
+@using DataAccess;
+
+@{
+    ViewBag.Title = "User Index";
+    SqlDataAccess2 da = new SqlDataAccess2();
+}
+
+<h2>User Index</h2>
+<h6>Hello @Model.Name</h6>
+
+<ul>
+    @foreach (Domain.Movie m in da.LoadMovies())
+    {
+        <li>@m.Name</li>
+    }
+</ul>
+
+
+

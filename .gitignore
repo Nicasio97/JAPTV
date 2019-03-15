@@ -14,3 +14,18 @@ DataAccess/Properties
 DataAccess/SqlDataAccess.cs
 DataAccess/bin
 
+WebApplication/App_Start
+WebApplication/Content
+WebApplication/Global.asax
+WebApplication/Global.asax.cs
+WebApplication/Properties
+WebApplication/Scripts
+WebApplication/Web.Debug.config
+WebApplication/Web.Release.config
+WebApplication/Web.config
+WebApplication/WebApplication.csproj
+WebApplication/WebApplication.csproj.user
+WebApplication/bin/
+WebApplication/favicon.ico
+WebApplication/fonts/
+WebApplication/packages.config
