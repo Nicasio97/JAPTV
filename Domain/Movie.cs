@@ -33,5 +33,9 @@ namespace Domain
             RunningTime = runningTime;
             AgeRestriction = ageRestriction;
         }
+        //public override string ToString()
+        //{
+        //    return String.Format("{0}", Name);
+        //}
     }
 }

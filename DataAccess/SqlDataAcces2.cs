@@ -58,6 +58,48 @@ namespace DataAccess
             return conn;
         }
 
+        public User LoadUser(string userName, string password)
+        {
+            try
+            {
+                SqlConnection conn = OpenConnection();
+                SqlCommand command = new SqlCommand("SELECT * FROM dbo.[User] WHERE UserName = @userName AND Password = @password ", conn);
+                command.Parameters.Add(new SqlParameter("@userName", userName));
+                command.Parameters.Add(new SqlParameter("@password", password));
+                SqlDataReader reader = command.ExecuteReader();
+                User user = new User();
+
+                while (reader.Read())
+                {
+                    user.UserName = reader["UserName"].ToString();
+                    user.Password = reader["Password"].ToString();
+                    user.UserID = int.Parse(reader["UserID"].ToString());
+                    user.Name = reader["Name"].ToString();
+                    user.Surname = reader["Surname"].ToString();
+                    user.Email = reader["Email"].ToString();
+                    user.BirthDate = DateTime.Parse(reader["BirthDate"].ToString());
+                }
+                return user;
+            }
+            catch (SqlException Sqle)
+            {
+                Console.WriteLine("Problema al cargar usuario");
+                Console.WriteLine(Sqle.Message);
+                return null;
+                //throw;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Problema no relacionado a Sql 2");
+                Console.WriteLine(e.Message);
+                return null;
+                //throw;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
         public User LoadUser(int userID)
         {
             try
@@ -69,7 +111,7 @@ namespace DataAccess
                 User user = new User();
 
                 while (reader.Read())
-                {                    
+                {
                     user.UserName = reader["UserName"].ToString();
                     user.Password = reader["Password"].ToString();
                     user.UserID = int.Parse(reader["UserID"].ToString());
@@ -118,14 +160,14 @@ namespace DataAccess
             {
                 Console.WriteLine("Problema al cargar usuario");
                 Console.WriteLine(Sqle.Message);
- 
+
                 //throw;
             }
             catch (Exception e)
             {
                 Console.WriteLine("Problema no relacionado a Sql 2");
                 Console.WriteLine(e.Message);
- 
+
                 //throw;
             }
             finally
@@ -134,6 +176,7 @@ namespace DataAccess
             }
         }
 
+        //Para traer peliculas con cierto ORDEN, incluir ORDER BY en el sql command 
         public Movie LoadMovie(int movieID)
         {
             try
@@ -182,25 +225,33 @@ namespace DataAccess
         {
             try
             {
-                SqlConnection conn = OpenConnection();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Movie", conn);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                List<Movie> lm = new List<Movie>();
-
-                foreach (DataRow dr in dt.Rows)
+                using (SqlConnection conn = OpenConnection())
                 {
-                    Movie movie = new Movie
+                    using (SqlCommand cmd = new SqlCommand("SELECT * FROM Movie", conn))
                     {
-                        MovieID = int.Parse(dr["MovieID"].ToString()),
-                        Name = dr["Name"].ToString(),
-                        Rating = float.Parse(dr["Rating"].ToString())
-                    };
-                    lm.Add(movie);
+                        var dt = new DataTable();
+                        var da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+
+                        List<Movie> lm = new List<Movie>();
+
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            Movie movie = new Movie();
+                            //{
+                            movie.MovieID = int.Parse(dr["MovieID"].ToString());
+                            movie.Name = dr["Name"].ToString();
+                            if (dr["Rating"] != DBNull.Value)
+                            {
+                                movie.Rating = float.Parse(dr["Rating"].ToString());
+                            }
+                            //};
+                            lm.Add(movie);
+                        }
+                        return lm;
+                    }
                 }
-                return lm;
+
             }
             catch (SqlException Sqle)
             {
