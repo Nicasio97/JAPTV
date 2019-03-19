@@ -669,7 +669,7 @@ namespace DataAccess
                     //}
                     //else
                     //{
-                    //    //throw new RateOutOFRangeException
+                    //    //throw new RateOutOfRangeException
                     //}
 
                     var command = new SqlCommand("UPDATE WatchedMovie SET UserRating = @points WHERE MovieID = @movieID AND UserID = @userID;", conn, trans);

@@ -8,14 +8,24 @@
 }
 
 <h2>User Index</h2>
-<h6>Hello @Model.Name</h6>
+#<!-- #region ALTERNATIVA 1 -->
+@*<h6>Hello @Model.Name</h6>
+
+    <ul>
+        @foreach (Domain.Movie m in da.LoadMovies())
+        {
+            <li>@m.Name</li>
+        }
+    </ul>*@
+<!-- #endregion -->
+
+<!-- #region ALTERNATIVA 2 (Error) -->
+@*<h6>Hello @ViewBag.User.Name</h6>
 
 <ul>
-    @foreach (Domain.Movie m in da.LoadMovies())
+    @foreach (Domain.Movie m in ViewBag.MovieList)
     {
         <li>@m.Name</li>
     }
-</ul>
-
-
-
+</ul>*@
+<!-- #endregion -->
