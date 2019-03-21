@@ -2,7 +2,7 @@
 @*@model WebApplication.Models.User*@
 <!-- #endregion -->
 <!-- #region ALTERNATIVA 3 -->
- @*@model WebApplication.Models*@
+ @model WebApplication.Models.DomainModel
 <!-- #endregion -->
 
 @{
@@ -27,10 +27,10 @@
 
     <!-- #region ALTERNATIVA 3 -->
     <div>
-        @Html.TextBoxFor(dm.User.UserName, new { @placeholder = "Usuario" })
+        @Html.TextBoxFor(m => m.User.UserName, new { @placeholder = "Usuario" })
     </div>
     <div>
-        @Html.PasswordFor(m => m.Password, new { @placeholder = "Contraseña" })
+        @Html.PasswordFor(m => m.User.Password, new { @placeholder = "Contraseña" })
     </div>
 
     <p style="color:#FF0000" ;>@ViewBag.Message</p>
