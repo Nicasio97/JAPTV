@@ -1,19 +1,39 @@
-﻿@model WebApplication.Models.User
+﻿<!-- #region ALTERNATIVA 1 -->
+@*@model WebApplication.Models.User*@
+<!-- #endregion -->
+<!-- #region ALTERNATIVA 3 -->
+ @*@model WebApplication.Models*@
+<!-- #endregion -->
 
 @{
     ViewBag.Title = "Log In";
+    @Model.User.UserName    
 }
 
 <h2>Log In</h2>
 
 @using (Html.BeginForm("LogInCheck", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post/*, new { @class = "form-horizontal", role = "form" }*/))
 {
-    <div>
+    <!-- #region ALTERNATIVA 1/2 -->
+    @*<div>
         @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Usuario" })
     </div>
     <div>
         @Html.PasswordFor(m => m.Password, new { @placeholder = "Contraseña" })
     </div>
     <p style="color:#FF0000" ;>@ViewBag.Message</p>
+    <input type="submit" value="Ingresar" class="btn btn-default" />*@
+    <!-- #endregion -->
+
+    <!-- #region ALTERNATIVA 3 -->
+    <div>
+        @Html.TextBoxFor(dm.User.UserName, new { @placeholder = "Usuario" })
+    </div>
+    <div>
+        @Html.PasswordFor(m => m.Password, new { @placeholder = "Contraseña" })
+    </div>
+
+    <p style="color:#FF0000" ;>@ViewBag.Message</p>
     <input type="submit" value="Ingresar" class="btn btn-default" />
+    <!-- #endregion -->
 }

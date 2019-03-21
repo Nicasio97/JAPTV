@@ -9,6 +9,7 @@ namespace WebApplication.Controllers
     public class AccountController : Controller
     {
         SqlDataAccess2 sql = new SqlDataAccess2();
+        
         // GET: Account
         public ActionResult LogIn(string message)
         {
@@ -18,20 +19,54 @@ namespace WebApplication.Controllers
 
         public ActionResult LogInCheck(string userName, string password)
         {
-            Domain.User user = new Domain.User();
+            #region ALTERNATIVA 1
+            //Domain.User user = new Domain.User();
+            //string actionName = null;
+            //string controllerName = null;
+            //object @object = null;
+
+            //if (!(String.IsNullOrWhiteSpace(userName) || String.IsNullOrWhiteSpace(password)))
+            //{
+            //    user = sql.LoadUser(userName, password);
+
+            //    if (!(user.UserName == null || user.Password == null))
+            //    {
+            //        actionName = "UserIndex";
+            //        controllerName = "User";
+            //        @object = new { userID = user.UserID };
+            //    }
+            //    else
+            //    {
+            //        actionName = "LogIn";
+            //        controllerName = "Account";
+            //        @object = new { message = "Incorrect username or password" };
+            //    }
+            //}
+            //else
+            //{
+            //    actionName = "LogIn";
+            //    controllerName = "Account";
+            //    @object = new { message = "Please, don't leave empty boxes" };
+            //}
+
+            //return RedirectToAction(actionName, controllerName, @object);
+            #endregion
+
+            #region ALTERNATIVA 3
+            DomainModel dm = new DomainModel();
             string actionName = null;
             string controllerName = null;
             object @object = null;
 
             if (!(String.IsNullOrWhiteSpace(userName) || String.IsNullOrWhiteSpace(password)))
             {
-                user = sql.LoadUser(userName, password);
+                dm.User = sql.LoadUser(userName, password);
 
-                if (!(user.UserName == null || user.Password == null))
+                if (!(dm.User.UserName == null || dm.User.Password == null))
                 {
                     actionName = "UserIndex";
                     controllerName = "User";
-                    @object = new { userID = user.UserID };
+                    @object = new { userID = dm.User.UserID };
                 }
                 else
                 {
@@ -54,5 +89,6 @@ namespace WebApplication.Controllers
         {
             return View();
         }
+        #endregion
     }
 }

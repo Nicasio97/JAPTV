@@ -33,9 +33,31 @@ namespace Domain
             RunningTime = runningTime;
             AgeRestriction = ageRestriction;
         }
+
+        #region ToString()
         //public override string ToString()
         //{
         //    return String.Format("{0}", Name);
         //}
+        #endregion
+
+        #region MovieList
+        //public List<Movie> _movies;
+        //public List<Movie> Movies
+        //{
+        //    get
+        //    {
+        //        if (_movies == null)
+        //            _movies = new List<Movie>();
+
+        //        return _movies;
+        //    }
+
+        //    set
+        //    {
+        //        _movies = value;
+        //    }
+        //}
+        #endregion        
     }
 }
