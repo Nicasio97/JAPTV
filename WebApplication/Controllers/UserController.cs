@@ -13,10 +13,28 @@ namespace WebApplication.Controllers
         SqlDataAccess2 sql = new SqlDataAccess2();
         
         // GET: User
-        public ActionResult UserIndex(int userID)
+        public ActionResult UserIndex()
         {
-            User user = sql.LoadUser(userID);
-            return View(user);
+            if (Session["UserID"] != null)
+            {
+                User user = sql.LoadUser((int)Session["UserID"]);
+                return View(user);
+            }
+            else
+            {
+                object @object = new { message = "You have to Log In first" };
+                return RedirectToAction("LogIn","Account",@object);
+            }            
+        }
+
+        public ActionResult UserInfo()
+        {
+            return View();
+        }
+
+        public ActionResult YourMovies()
+        {
+            return View();
         }
     }
 }

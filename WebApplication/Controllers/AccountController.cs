@@ -18,40 +18,37 @@ namespace WebApplication.Controllers
 
         public ActionResult LogInCheck(string userName, string password)
         {
-            string actionName = null;
-            string controllerName = null;
-            object @object = null;
-
             if (!(string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password)))
             {
                 User user = sql.LoadUser(userName, password);
 
                 if (!string.IsNullOrWhiteSpace(user.UserName))
                 {
-                    actionName = "UserIndex";
-                    controllerName = "User";
-                    @object = new { userID = user.UserID };
+                    Session["UserName"] = user.UserName;
+                    Session["UserID"] = user.UserID;                    
+                    return RedirectToAction("UserIndex", "User");
                 }
                 else
-                {
-                    actionName = "LogIn";
-                    controllerName = "Account";
-                    @object = new { message = "Incorrect username or password" };
+                {                    
+                    return RedirectToAction("LogIn", "Account", new { message = "Incorrect username or password" });
                 }
             }
             else
             {
-                actionName = "LogIn";
-                controllerName = "Account";
-                @object = new { message = "Please, don't leave empty boxes" };
-            }
-
-            return RedirectToAction(actionName, controllerName, @object);
+                return RedirectToAction("LogIn", "Account", new { message = "Please, don't leave empty boxes" });
+            }            
         }
 
         public ActionResult SignIn()
         {
             return View();
+        }
+
+        public ActionResult SignOff()
+        {
+            Session["UserName"] = null;
+            Session["UserID"] = null;
+            return RedirectToAction("Index","Home");
         }
     }
 }
