@@ -1,8 +1,7 @@
 ﻿using DataAccess;
 using System;
 using System.Web.Mvc;
-using WebApplication.Models;
-using Domain;
+using Entities.Models;
 
 namespace WebApplication.Controllers
 {
@@ -53,20 +52,20 @@ namespace WebApplication.Controllers
             #endregion
 
             #region ALTERNATIVA 3
-            DomainModel dm = new DomainModel();
+             
             string actionName = null;
             string controllerName = null;
             object @object = null;
 
-            if (!(String.IsNullOrWhiteSpace(userName) || String.IsNullOrWhiteSpace(password)))
+            if (!(string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password)))
             {
-                dm.User = sql.LoadUser(userName, password);
+                User user = sql.LoadUser(userName, password);
 
-                if (!(dm.User.UserName == null || dm.User.Password == null))
+                if (!string.IsNullOrWhiteSpace(user.UserName))
                 {
                     actionName = "UserIndex";
                     controllerName = "User";
-                    @object = new { userID = dm.User.UserID };
+                    @object = new { userID = user.UserID };
                 }
                 else
                 {

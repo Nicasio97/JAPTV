@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DataAccess;
-using WebApplication.Models;
-using Domain;
+using Entities.Models;
 
 namespace WebApplication.Controllers
 {
@@ -34,10 +33,13 @@ namespace WebApplication.Controllers
             #endregion
 
             #region ALTERNATIVA 3
-            DomainModel dm = new DomainModel();
-            dm.User = sql.LoadUser(userID);
-            return View(dm.User);
-            #endregion            
+            //DomainModel dm = new DomainModel();
+            //dm.User = sql.LoadUser(userID);
+            //return View(dm.User);
+            #endregion
+
+            User user = sql.LoadUser(userID);
+            return View(user);
         }
     }
 }

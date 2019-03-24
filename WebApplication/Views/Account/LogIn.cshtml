@@ -2,12 +2,11 @@
 @*@model WebApplication.Models.User*@
 <!-- #endregion -->
 <!-- #region ALTERNATIVA 3 -->
- @model WebApplication.Models.DomainModel
+ @model Entities.Models.User
 <!-- #endregion -->
 
 @{
     ViewBag.Title = "Log In";
-    @Model.User.UserName    
 }
 
 <h2>Log In</h2>
@@ -27,10 +26,10 @@
 
     <!-- #region ALTERNATIVA 3 -->
     <div>
-        @Html.TextBoxFor(m => m.User.UserName, new { @placeholder = "Usuario" })
+        @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Usuario" })
     </div>
     <div>
-        @Html.PasswordFor(m => m.User.Password, new { @placeholder = "Contraseña" })
+        @Html.PasswordFor(m => m.Password, new { @placeholder = "Contraseña" })
     </div>
 
     <p style="color:#FF0000" ;>@ViewBag.Message</p>

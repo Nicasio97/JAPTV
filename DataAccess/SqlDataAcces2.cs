@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;

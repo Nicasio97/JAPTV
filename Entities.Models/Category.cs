@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Entities.Models
 {
-    public class Actor
+    public class Category
     {
-        public int ActorID { get; set; }
+        public int CategoryID { get; set; }
         public string Name { get; set; }
 
-        public Actor()
+        public Category()
         {
         }
-        public Actor(int actorID, string name)
+        public Category(int categoryID, string name)
         {
-            ActorID = actorID;
+            CategoryID = categoryID;
             Name = name;
         }
 

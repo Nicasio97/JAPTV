@@ -1,9 +1,8 @@
 ﻿<!-- #region ALTERNATIVA 3 -->
 @*@model WebApplication.Models.DomainModel*@
 <!-- #endregion -->
-@model WebApplication.Models.User
+@model Entities.Models.User
 @using DataAccess
-@using Domain
 
 @{
     ViewBag.Title = "User Index";
@@ -15,13 +14,12 @@
 <h6>Hello @Model.Name</h6>
 
 <ul>
-    @foreach (Domain.Movie m in da.LoadMovies())
+    @foreach (Entities.Models.Movie m in da.LoadMovies())
     {
         <li>@m.Name</li>
     }
 </ul>
 <!-- #endregion -->
-
 <!-- #region ALTERNATIVA 2 (Error) -->
 @*<h6>Hello @ViewBag.User.Name</h6>
 
@@ -32,7 +30,6 @@
         }
     </ul>*@
 <!-- #endregion -->
-
 <!-- #region ALTERNATIVA 3 -->
 @*<h6>Hello @Model.User.Name</h6>
 
