@@ -197,7 +197,7 @@ namespace DataAccess
                     movie.Director = reader["Director"].ToString();
                     movie.ReleaseDate = DateTime.Parse(reader["ReleaseDate"].ToString());
                     movie.Rating = float.Parse(reader["Rating"].ToString());
-                    movie.RunningTime = int.Parse(reader["RunningTime"].ToString());
+                    movie.RunningTime = reader["RunningTime"].ToString();
                     movie.AgeRestriction = reader["AgeRestriction"].ToString();
                 }
                 return movie;

@@ -16,11 +16,11 @@ namespace Entities.Models
         public List<Category> Categories { get; set; }
         public DateTime ReleaseDate { get; set; }
         public float Rating { get; set; }
-        public int RunningTime { get; set; }
+        public string RunningTime { get; set; }
         public string AgeRestriction { get; set; } //List
 
         public Movie() { }
-        public Movie(int movieID, string name, string description, List<Actor> cast, string director, List<Category> categories, DateTime releaseDate, float rating, int runningTime, string ageRestriction)
+        public Movie(int movieID, string name, string description, List<Actor> cast, string director, List<Category> categories, DateTime releaseDate, float rating, string runningTime, string ageRestriction)
         {
             MovieID = movieID;
             Name = name;
