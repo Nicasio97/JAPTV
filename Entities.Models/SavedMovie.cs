@@ -11,7 +11,7 @@ namespace Entities.Models
         public SavedMovie()
         {
         }
-        public SavedMovie(int movieID, string name, string description, List<Actor> cast, string director, List<Category> categories, DateTime releaseDate, float rating, string runningTime, string ageRestriction, string posterLink) : base(movieID, name, description, cast, director, categories, releaseDate, rating, runningTime, ageRestriction)
+        public SavedMovie(int movieID, string name, string description, List<Actor> cast, string director, List<Category> categories, DateTime releaseDate, float rating, string runningTime, string ageRestriction, string posterLink)
         {
         }
     }
