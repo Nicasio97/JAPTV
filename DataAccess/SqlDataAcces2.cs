@@ -199,6 +199,7 @@ namespace DataAccess
                     movie.Rating = float.Parse(reader["Rating"].ToString());
                     movie.RunningTime = reader["RunningTime"].ToString();
                     movie.AgeRestriction = reader["AgeRestriction"].ToString();
+                    movie.PosterLink = reader["PosterLink"].ToString();
                 }
                 return movie;
             }
@@ -238,14 +239,15 @@ namespace DataAccess
                         foreach (DataRow dr in dt.Rows)
                         {
                             Movie movie = new Movie();
-                            //{
+                            
                             movie.MovieID = int.Parse(dr["MovieID"].ToString());
                             movie.Name = dr["Name"].ToString();
                             if (dr["Rating"] != DBNull.Value)
                             {
                                 movie.Rating = float.Parse(dr["Rating"].ToString());
                             }
-                            //};
+                            movie.PosterLink = dr["PosterLink"].ToString();
+
                             lm.Add(movie);
                         }
                         return lm;

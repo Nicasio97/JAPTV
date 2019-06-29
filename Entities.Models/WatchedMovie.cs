@@ -14,7 +14,7 @@ namespace Entities.Models
         public WatchedMovie()
         {
         }
-        public WatchedMovie(int movieID, string name, string description, List<Actor> cast, string director, List<Category> categories, DateTime releaseDate, float rating, string runningTime, string ageRestriction, DateTime watchedDate, int userRating) : base(movieID, name, description, cast, director, categories, releaseDate, rating, runningTime, ageRestriction)
+        public WatchedMovie(int movieID, string name, string description, List<Actor> cast, string director, List<Category> categories, DateTime releaseDate, float rating, string runningTime, string ageRestriction, string posterLink, string PosterLink, DateTime watchedDate, int userRating) : base(movieID, name, description, cast, director, categories, releaseDate, rating, runningTime, ageRestriction, posterLink)
         {
             WatchedDate = watchedDate;
             UserRating = userRating;

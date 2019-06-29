@@ -18,9 +18,10 @@ namespace Entities.Models
         public float Rating { get; set; }
         public string RunningTime { get; set; }
         public string AgeRestriction { get; set; } //List
+        public string PosterLink { get; set; }
 
         public Movie() { }
-        public Movie(int movieID, string name, string description, List<Actor> cast, string director, List<Category> categories, DateTime releaseDate, float rating, string runningTime, string ageRestriction)
+        public Movie(int movieID, string name, string description, List<Actor> cast, string director, List<Category> categories, DateTime releaseDate, float rating, string runningTime, string ageRestriction, string posterLink)
         {
             MovieID = movieID;
             Name = name;
@@ -32,6 +33,7 @@ namespace Entities.Models
             Rating = rating;
             RunningTime = runningTime;
             AgeRestriction = ageRestriction;
+            PosterLink = posterLink;
         }
 
         #region ToString()
