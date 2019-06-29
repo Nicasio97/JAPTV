@@ -30,12 +30,6 @@ WebApplication/favicon.ico
 WebApplication/fonts/
 WebApplication/packages.config
 
-Entities.Models/bin/Debug/DataAccess.dll
-Entities.Models/bin/Debug/DataAccess.pdb
-Entities.Models/bin/Debug/Domain.dll
-Entities.Models/bin/Debug/Domain.pdb
-Entities.Models/bin/Debug/Entities.Models.dll
-Entities.Models/bin/Debug/Entities.Models.pdb
 Entities.Models/bin/Debug/Microsoft.Web.Infrastructure.dll
 Entities.Models/bin/Debug/System.Web.Mvc.dll
 Entities.Models/bin/Debug/System.Web.Mvc.xml
@@ -49,6 +43,14 @@ Entities.Models/bin/Debug/System.Web.WebPages.Razor.dll
 Entities.Models/bin/Debug/System.Web.WebPages.Razor.xml
 Entities.Models/bin/Debug/System.Web.WebPages.dll
 Entities.Models/bin/Debug/System.Web.WebPages.xml
-Entities.Models/bin/Debug/WebApplication.dll
+
+
+Entities.Models/bin/Debug/DataAccess.dll
+Entities.Models/bin/Debug/DataAccess.pdb
+Entities.Models/bin/Debug/Domain.dll
+Entities.Models/bin/Debug/Domain.pdb
+Entities.Models/bin/Debug/Entities.Models.dll
+Entities.Models/bin/Debug/Entities.Models.pdb
 Entities.Models/bin/Debug/WebApplication.dll.config
 Entities.Models/bin/Debug/WebApplication.pdb
+
