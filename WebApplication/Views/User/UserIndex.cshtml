@@ -10,10 +10,9 @@
 
 <h6>Hello @Model.Name</h6>
 
-<ul>
-    @foreach (Entities.Models.Movie m in da.LoadMovies())
-    {
-        <li>@m.Name</li>
-    }
-</ul>
+@foreach (Entities.Models.Movie m in da.LoadMovies())
+{
+<img src="@m.PosterLink" alt="@m.Name" />
+}
+
 
